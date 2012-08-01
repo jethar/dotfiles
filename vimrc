@@ -129,3 +129,31 @@ nmap <unique> <leader>n :NERDTreeToggle<CR>
 nnoremap <unique> <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>     " Open .vimrc file for editing in vertical split
 nnoremap <unique> <leader>w <C-w>v<C-w>l                        " open a new vertical split and switch over to it
 nnoremap <unique> <leader>W :%s/\s\+$//<cr>:let @/=''<CR>       " strip all trailing whitespace in the current file
+
+" Run the current file with rspec
+map <Leader>rb :call RunVimTmuxCommand("clear; rspec " . bufname("%"))<CR>
+
+" Prompt for a command to run
+map <Leader>rp :PromptVimTmuxCommand<CR>
+
+" Run last command executed by RunVimTmuxCommand
+map <Leader>rl :RunLastVimTmuxCommand<CR>
+
+" Inspect runner pane
+map <Leader>ri :InspectVimTmuxRunner<CR>
+
+" Close all other tmux panes in current window
+map <Leader>rx :CloseVimTmuxPanes<CR>
+
+" Close vim tmux runner opened by RunVimTmuxCommand
+map <Leader>rq :CloseVimTmuxRunner<CR>
+
+" Interrupt any command running in the runner pane
+map <Leader>rs :InterruptVimTmuxRunner<CR>
+
+if exists('$TMUX')
+  autocmd FileType ruby map <buffer> <Leader>f :RunRubyFocusedTest<CR>
+  autocmd FileType ruby map <buffer> <Leader>t :RunAllRubyTests<CR>
+  autocmd FileType cucumber map <Leader>f :RunFocusedCuke<CR>
+  autocmd FileType cucumber map <Leader>t :RunAllCukes<CR>
+endif
