@@ -1,5 +1,4 @@
 set history=50
-set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set nobackup
 set nocompatible  " Use Vim settings, rather then Vi settings
@@ -7,6 +6,16 @@ set noswapfile
 set nowritebackup
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
+
+" set relativenumber   " changes Vim's line number coulm to display how far
+                       " away from current one
+
+set ignorecase
+set smartcase
+set incsearch     " do incremental searching
+set showmatch
+set hlsearch
+nnoremap <leader><space> :noh<cr>
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -108,3 +117,15 @@ let mapleader = " "
 " prefer the scheme to match the original monokai background color
 let g:molokai_original = 1
 
+" command! -nargs=* Wrap set wrap linebreak nolist
+
+set pastetoggle=<F2>      " Vim will switch to paste mode, disabling all kinds of smartness and 
+                          " just pasting a whole buffer of text. 
+                          " Otherwise autoindentation causes lot of indents 
+                          " Then, you can disable paste mode again with another press of <F2>. 
+
+nmap <unique> <leader>tag :TagbarToggle<CR>
+nmap <unique> <leader>n :NERDTreeToggle<CR>
+nnoremap <unique> <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>     " Open .vimrc file for editing in vertical split
+nnoremap <unique> <leader>w <C-w>v<C-w>l                        " open a new vertical split and switch over to it
+nnoremap <unique> <leader>W :%s/\s\+$//<cr>:let @/=''<CR>       " strip all trailing whitespace in the current file
