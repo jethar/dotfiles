@@ -50,7 +50,7 @@ if executable("ack")
 endif
 
 " Color scheme
-colorscheme vividchalk
+colorscheme zenburn
 highlight NonText guibg=#060606
 highlight Folded  guibg=#0A0A0A guifg=#9090D0
 
@@ -104,3 +104,7 @@ au BufRead,BufNewFile *.md set filetype=markdown
 " Space is inserted via <C-v><Space>
 " see ':h map_space' in vim for further info
 let mapleader = " "
+
+" prefer the scheme to match the original monokai background color
+let g:molokai_original = 1
+
